@@ -30,6 +30,8 @@ spAppendScalaVersion := true
 
 spIncludeMaven := true
 
+javaOptions += "-Dlog4j.configuration=file:conf/log4j.properties"
+
 /********************
   * Release settings *
   ********************/
