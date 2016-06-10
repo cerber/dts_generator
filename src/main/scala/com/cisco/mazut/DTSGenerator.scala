@@ -20,9 +20,9 @@ import scala.collection.JavaConversions._
 object DTSGenerator {
 
   private def dtFormat = new java.text.SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss.SSS")
-  val sampleDTS = "data/mllib/sample_dts.xml"
+  val sampleDTS = "data/dts/sample_dts.xml"
 
-  val dts = com.cisco.mazut.dts.utils.XMLParser.parse("data/mllib/sample_dts.xml").logs.get(0)
+  val dts = com.cisco.mazut.dts.utils.XMLParser.parse("data/dts/sample_dts.xml").logs.get(0)
 
   def load_data(sqlContext: SQLContext, path: String): DataFrame = {
     val dts = XMLParser.parse(path).logs.get(0)
@@ -49,10 +49,10 @@ object DTSGenerator {
 
   def eval(sqlContext: SQLContext) = {
     // Load the data stored in LIBSVM format as a DataFrame.
-//    val data = sqlContext.read.format("libsvm")
-//      .load("data/mllib/sample_multiclass_classification_data.txt")
+    val data = sqlContext.read.format("libsvm")
+      .load("data/mllib/sample_multiclass_classification_data.txt")
 
-    val data = load_data(sqlContext, sampleDTS)
+//    val data = load_data(sqlContext, sampleDTS)
 
     // Split the data into train and test
     val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
@@ -81,7 +81,7 @@ object DTSGenerator {
     result.show(20)
   }
 
-  def sample1(sqlContext: SQLContext): Unit = {
+  def estimatorTransformer(sqlContext: SQLContext): Unit = {
     // Prepare training data from a list of (label, features) tuples.
     val training = sqlContext.createDataFrame(Seq(
       (1.0, Vectors.dense(0.0, 1.1, 0.1)),

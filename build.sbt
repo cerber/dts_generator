@@ -2,24 +2,23 @@ name := "dts_generator"
 
 version := "1.0.1"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 organization := "cisco.com"
 
-resolvers += Resolver.bintrayRepo("crate", "crate")
+//resolvers += Resolver.bintrayRepo("crate", "crate")
 
 sparkVersion := "1.6.1"
 
 libraryDependencies ++= Seq(
-  //  "org.apache.hadoop" % "hadoop-common" % "2.2.0",
-  //  "org.apache.hadoop" % "hadoop-hdfs" % "2.2.0",
-  "com.github.scopt" %% "scopt" % "3.4.0",
-  "joda-time" % "joda-time" % "2.9.3",
-  "com.databricks" %% "spark-avro" % "2.0.1",
-  "com.databricks" %% "spark-csv" % "1.4.0",
-  "org.apache.commons" % "commons-math3" % "3.6.1",
-  "io.crate" % "crate-jdbc-standalone" % "1.12.1",
-  "com.google.code.gson" % "gson" % "2.6"
+  "org.scala-lang" % "scala-xml" % "2.11.0-M4"
+//  "com.github.scopt" %% "scopt" % "3.4.0"
+//  "joda-time" % "joda-time" % "2.9.3",
+//  "com.databricks" %% "spark-avro" % "2.0.1",
+//  "com.databricks" %% "spark-csv" % "1.4.0",
+//  "org.apache.commons" % "commons-math3" % "3.6.1",
+//  "io.crate" % "crate-jdbc-standalone" % "1.12.1",
+//  "com.google.code.gson" % "gson" % "2.6"
 )
 
 sparkComponents := Seq("core", "sql", "mllib")
